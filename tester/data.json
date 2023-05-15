@@ -1,0 +1,26 @@
+{
+    "test0001":{
+        "Accuracy": 98,
+        "total_images": 100,
+        "cat1_images": 50,
+        "cat2_images": 50,
+        "execution_time": 0.5,
+        "date": "2019-01-01"
+    },
+    "test0002":{
+        "Accuracy": 97,
+        "total_images": 100,
+        "cat1_images": 50,
+        "cat2_images": 50,
+        "execution_time": 0.5,
+        "date": "2019-01-01"
+    },
+    "test0003":{
+        "Accuracy": 99,
+        "total_images": 100,
+        "cat1_images": 50,
+        "cat2_images": 50,
+        "execution_time": 0.6,
+        "date": "2019-01-01"
+    }
+}
