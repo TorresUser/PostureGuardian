@@ -1,0 +1,6 @@
+imageio==2.14.1
+matplotlib==3.5.1
+numpy==1.21.5
+opencv_python==4.5.5.62
+tensorflow==2.8.0
+tensorflow_docs==0.0.0.dev0
