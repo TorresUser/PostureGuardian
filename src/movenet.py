@@ -6,13 +6,13 @@ import os
 import json
 import tensorflow as tf
 import numpy as np
-from helper import *
+from .helper import draw_prediction_on_image
 from matplotlib import pyplot as plt
 
 # Input size for the model 
 input_size = 256
 
-def predict_movenet_for_image(image_path, output_path=None):
+def predict_movenet_for_image(image_path, output_path=None, process_image=True):
 
     image = tf.io.read_file(image_path)
     image = tf.image.decode_jpeg(image)
@@ -23,7 +23,7 @@ def predict_movenet_for_image(image_path, output_path=None):
 
     # Run model inference.
 
-    interpreter = tf.lite.Interpreter(model_path="lite-model_movenet_singlepose_thunder_tflite_float16_4.tflite")
+    interpreter = tf.lite.Interpreter(model_path="./src/lite-model_movenet_singlepose_thunder_tflite_float16_4.tflite")
 
     interpreter.allocate_tensors()
     """Runs detection on an input image.
@@ -55,18 +55,16 @@ def predict_movenet_for_image(image_path, output_path=None):
     # Guardar los datos procesados en un nuevo archivo
     keypoints = {'keypoints': positions.tolist()}
     # print(etiquetar_keypoints(keypoints_with_scores))
+    if process_image:
+        # Visualize the predictions with image.
+        display_image = tf.expand_dims(image, axis=0)
+        display_image = tf.cast(tf.image.resize_with_pad(
+            display_image, 1280, 1280), dtype=tf.int32)
+        output_overlay = draw_prediction_on_image(np.squeeze(display_image.numpy(), axis=0), keypoints_with_scores)
 
-    # Visualize the predictions with image.
-    display_image = tf.expand_dims(image, axis=0)
-    display_image = tf.cast(tf.image.resize_with_pad(
-        display_image, 1280, 1280), dtype=tf.int32)
-    output_overlay = draw_prediction_on_image(np.squeeze(display_image.numpy(), axis=0), keypoints_with_scores)
-
-    # Save the output image
-    if output_path is not None:
-        plt.imsave(output_path, output_overlay)
-        return keypoints
+        # Save the output image
+        if output_path is not None:
+            plt.imsave(output_path, output_overlay)
+            return keypoints
     
     return keypoints, output_overlay
-
-print(predict_movenet_for_image("./test.jpg", "./test_output.jpg"))

@@ -1,0 +1,9 @@
+.env
+./env
+src/__pycache__
+bot/__pycache__
+bot/images
+tester/__pycache__
+trainer/__pycache__
+app/__pycache__
+

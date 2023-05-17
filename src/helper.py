@@ -9,7 +9,7 @@ import matplotlib.patches as patches
 
 import cv2
 
-from tensorflow_docs.vis import embed
+# from tensorflow_docs.vis import embed
 # Confidence score to determine whether a keypoint prediction is reliable.
 MIN_CROP_KEYPOINT_SCORE = 0.2
 
@@ -349,8 +349,8 @@ def draw_prediction_on_image(
          interpolation=cv2.INTER_CUBIC)
   return image_from_plot
 
-def to_gif(images, fps):
-  """Converts image sequence (4D numpy array) to gif."""
-  imageio.mimsave('./animation.gif', images, fps=fps)
-  return embed.embed_file('./animation.gif')
+# def to_gif(images, fps):
+#   """Converts image sequence (4D numpy array) to gif."""
+#   imageio.mimsave('./animation.gif', images, fps=fps)
+#   return embed.embed_file('./animation.gif')
 
