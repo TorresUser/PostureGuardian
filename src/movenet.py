@@ -12,10 +12,12 @@ from matplotlib import pyplot as plt
 # Input size for the model 
 input_size = 256
 
-def predict_movenet_for_image(image_path, output_path=None, process_image=True):
+def predict_movenet_for_image(image, output_path:str=None, process_image:bool=True):
+    '''Recibe una imagen o un path de imagen y devuelve los keypoints procesados de la persona detectada en la imagen junto con la imagen con el overlay si process_image=True. Guarda el overlay en output_path si se especifica.'''
 
-    image = tf.io.read_file(image_path)
-    image = tf.image.decode_jpeg(image)
+    if type(image) == str:
+        image = tf.io.read_file(image)
+        image = tf.image.decode_jpeg(image)
 
     # Resize and pad the image to keep the aspect ratio and fit the expected size.
     input_image = tf.expand_dims(image, axis=0)
@@ -55,6 +57,8 @@ def predict_movenet_for_image(image_path, output_path=None, process_image=True):
     # Guardar los datos procesados en un nuevo archivo
     keypoints = {'keypoints': positions.tolist()}
     # print(etiquetar_keypoints(keypoints_with_scores))
+
+    # Procesar la imagen si es necesario
     if process_image:
         # Visualize the predictions with image.
         display_image = tf.expand_dims(image, axis=0)
@@ -62,9 +66,12 @@ def predict_movenet_for_image(image_path, output_path=None, process_image=True):
             display_image, 1280, 1280), dtype=tf.int32)
         output_overlay = draw_prediction_on_image(np.squeeze(display_image.numpy(), axis=0), keypoints_with_scores)
 
-        # Save the output image
+        # Guardar la imagen procesada si es necesario
         if output_path is not None:
             plt.imsave(output_path, output_overlay)
-            return keypoints
+
+        # Devolver los keypoints y la imagen procesada si es necesario guardarla
+        return keypoints, output_overlay
     
-    return keypoints, output_overlay
+    # Devolver los keypoints si no es necesario procesar la imagen
+    return keypoints
