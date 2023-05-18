@@ -4,6 +4,8 @@ src/__pycache__
 bot/__pycache__
 bot/images
 tester/__pycache__
+tester/tests
 trainer/__pycache__
 app/__pycache__
 
+inputs/
