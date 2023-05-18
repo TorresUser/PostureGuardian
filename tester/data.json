@@ -1,26 +1,18 @@
 {
-    "test0001":{
-        "Accuracy": 98,
-        "total_images": 100,
-        "cat1_images": 50,
-        "cat2_images": 50,
-        "execution_time": 0.5,
-        "date": "2019-01-01"
+    "test0002": {
+        "accuracy": 100.0,
+        "total_images": 12,
+        "arriba_images": 6,
+        "abajo_images": 6,
+        "execution_time": 3.625082015991211,
+        "date": "2023-05-18 20:19:26"
     },
-    "test0002":{
-        "Accuracy": 97,
-        "total_images": 100,
-        "cat1_images": 50,
-        "cat2_images": 50,
-        "execution_time": 0.5,
-        "date": "2019-01-01"
-    },
-    "test0003":{
-        "Accuracy": 99,
-        "total_images": 100,
-        "cat1_images": 50,
-        "cat2_images": 50,
-        "execution_time": 0.6,
-        "date": "2019-01-01"
+    "test0003": {
+        "accuracy": 100.0,
+        "total_images": 12,
+        "arriba_images": 6,
+        "abajo_images": 6,
+        "execution_time": 3.5859756469726562,
+        "date": "2023-05-18 20:20:30"
     }
 }
