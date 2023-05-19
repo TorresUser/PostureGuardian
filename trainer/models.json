@@ -1,0 +1,47 @@
+{
+    "train_0001": {
+        "model": "model-v3.h5",
+        "train": "train_0001",
+        "dataset": {
+            "total": 46261,
+            "buena_pose": 18471,
+            "mala_pose": 27790
+        },
+        "accuracy": 97.04,
+        "loss": 0.07,
+        "version": "3",
+        "training_time": 56.25979566574097,
+        "date": "2023-05-19 14:44:41",
+        "dataset_zip": "./trainer/datasets/dataset_0001_model_v3.zip"
+    },
+    "train_0002": {
+        "model": "model-v4.h5",
+        "train": "train_0002",
+        "dataset": {
+            "total": 46261,
+            "buena_pose": 18471,
+            "mala_pose": 27790
+        },
+        "accuracy": 99.87,
+        "loss": 0.0,
+        "version": "4",
+        "training_time": 50.7146942615509,
+        "date": "2023-05-19 16:05:38",
+        "dataset_zip": "./trainer/datasets/dataset_0002_model_v4.zip"
+    },
+    "train_0003": {
+        "model": "model-v5.h5",
+        "train": "train_0003",
+        "dataset": {
+            "total": 46261,
+            "buena_pose": 18471,
+            "mala_pose": 27790
+        },
+        "accuracy": 99.92,
+        "loss": 0.0,
+        "version": "5",
+        "training_time": 61.65929388999939,
+        "date": "2023-05-19 18:12:30",
+        "dataset_zip": "./trainer/datasets/dataset_0003_model_v5.zip"
+    }
+}

@@ -43,7 +43,7 @@ for category in categories:
         
         data = {
             "image": image,
-            "keypoints": keypoints,
+            "keypoints": keypoints["keypoints"],
             "label": category,
             "prediction": prediction,
             "score": score

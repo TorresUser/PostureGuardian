@@ -25,7 +25,7 @@ def predict_movenet_for_image(image, output_path:str=None, process_image:bool=Tr
 
     # Run model inference.
 
-    interpreter = tf.lite.Interpreter(model_path="./src/lite-model_movenet_singlepose_thunder_tflite_float16_4.tflite")
+    interpreter = tf.lite.Interpreter(model_path="./src/models/lite-model_movenet_singlepose_thunder_tflite_float16_4.tflite")
 
     interpreter.allocate_tensors()
     """Runs detection on an input image.

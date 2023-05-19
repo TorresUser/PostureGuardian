@@ -2,13 +2,13 @@
 
 import tensorflow as tf
 import numpy as np
-import json
+import dotenv
 
-# Load the saved model
+version = dotenv.get_key('.env', 'ACTIVE_MODEL_VERSION')
 
 # Define a function to preprocess the data and make predictions
 def predict(data):
-    model = tf.keras.models.load_model('./src/modelo.h5')
+    model = tf.keras.models.load_model(f'./src/models/model-v{version}.h5')
     # Extract the keypoints from the JSON file
 
     keypoints = data['keypoints']
@@ -20,12 +20,13 @@ def predict(data):
     keypoints_norm = (keypoints - np.mean(keypoints)) / np.std(keypoints)
     # Make predictions using the model
     y_pred = model.predict(keypoints_norm)
+    print("La prediccion es: ", y_pred)
     # Convert the predicted probabilities to a binary label
     if y_pred > 0.5:
-        label = 'arriba'
+        label = 'buena_pose'
         score = y_pred
     else:
-        label = 'abajo'
+        label = 'mala_pose'
         score = 1 - y_pred
 
     # convert the numpy array to a int with one decimal place but no rounding

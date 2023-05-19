@@ -3,9 +3,11 @@
 src/__pycache__
 bot/__pycache__
 bot/images
+bot/videos
 tester/__pycache__
 tester/tests
 trainer/__pycache__
+trainer/dataset
 app/__pycache__
 
 inputs/

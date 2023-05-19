@@ -6,7 +6,7 @@ from src import movenet
 import time
 
 
-def make_frames(video_path, image_output, keypoint_output=None):
+def make_frames(video_path, image_output, keypoint_output=None, fps=12):
     # Abre el video
     start_time = time.time()
     video = cv2.VideoCapture(video_path)
@@ -33,7 +33,7 @@ def make_frames(video_path, image_output, keypoint_output=None):
             break
         if keypoint_output:
             # Procesa el fotograma para obtener los keypoints
-            keypoints = movenet.predict_movenet_for_image(frame, process_image=True)
+            keypoints = movenet.predict_movenet_for_image(frame, process_image=False)
             
             # Guarda los keypoints en un archivo JSON
             output_path = os.path.join(keypoint_output, f"keypoints_{video_name}_f{count}.json")
@@ -46,6 +46,8 @@ def make_frames(video_path, image_output, keypoint_output=None):
         
         # Incrementa el contador de fotogramas
         count += 1
+        print(f"Convirtiendo fotograma {count} del video {video}...")
+        video.set(cv2.CAP_PROP_POS_FRAMES, int(video.get(cv2.CAP_PROP_POS_FRAMES) + fps))
     
     # Cierra el video
     video.release()
